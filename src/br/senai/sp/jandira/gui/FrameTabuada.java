@@ -3,11 +3,15 @@ package br.senai.sp.jandira.gui;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.color.ColorSpace;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
@@ -91,6 +95,7 @@ public class FrameTabuada {
 
 		JButton buttonCalcular = new JButton();
 		buttonCalcular.setText("Calcular");
+		buttonCalcular.setBorder(new LineBorder(Color.BLUE));
 		buttonCalcular.setBackground(new Color(3, 147, 48));
 		buttonCalcular.setForeground(Color.WHITE);
 		buttonCalcular.setFont(new Font("Arial", Font.BOLD, 20));
@@ -98,6 +103,7 @@ public class FrameTabuada {
 
 		JButton buttonLimpar = new JButton();
 		buttonLimpar.setText("Limpar");
+		buttonLimpar.setBorder(new LineBorder(Color.BLUE));
 		buttonLimpar.setBackground(new Color(255, 168, 51));
 		buttonLimpar.setForeground(Color.WHITE);
 		buttonLimpar.setFont(new Font("Arial", Font.BOLD, 20));
@@ -107,6 +113,22 @@ public class FrameTabuada {
 		labelResultado.setText("Resultado:");
 		labelResultado.setFont(new Font("Arial", Font.BOLD, 20));
 		labelResultado.setBounds(15, 330, 150, 50);
+		
+		JList<String> listLista = new JList<>();
+		listLista.setBackground(new Color(255,255,167));
+		listLista.setBorder(new LineBorder(Color.BLUE));
+		listLista.setSize(400,400);
+		listLista.setBounds(10, 370, 440, 270);
+		
+		buttonCalcular.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+			}
+		});
 
 		painel.add(labelIcone);
 		painel.add(labelTitulo);
@@ -121,6 +143,7 @@ public class FrameTabuada {
 		painel.add(buttonCalcular);
 		painel.add(buttonLimpar);
 		painel.add(labelResultado);
+		painel.add(listLista);
 
 		tela.setVisible(true);
 

@@ -1,24 +1,30 @@
 package br.senai.sp.jandira.model;
 
-import java.util.ArrayList;
-
 public class Tabuada {
 
 	public int multiplicador;
 	public int minimoMultiplicador;
 	public int maximoMultiplicador;
-	public ArrayList<String> resultado = new ArrayList<String>();
 
-	public ArrayList<String> getNumeroResultado() {
+	public String[] getResultado() {
 
+		int tamanho = maximoMultiplicador - minimoMultiplicador + 1;
+		String[] tabuada = new String[tamanho];
+		int i = 0;
+		
 		while(minimoMultiplicador <= maximoMultiplicador) {
-
-			resultado.add(multiplicador + " x " +  minimoMultiplicador + " = " + (multiplicador * minimoMultiplicador));
-			multiplicador++;
-
+			
+			int produto = multiplicador * minimoMultiplicador;
+			
+			String resultado = multiplicador + " X " + minimoMultiplicador + " = " + produto;	
+			tabuada[i] = resultado;
+			
+			i++;
+			minimoMultiplicador++;
+			
 		}
 
-		return resultado;
+		return tabuada;
 
 	}
 

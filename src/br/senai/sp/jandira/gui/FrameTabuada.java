@@ -2,18 +2,24 @@ package br.senai.sp.jandira.gui;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.color.ColorSpace;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+
+import br.senai.sp.jandira.model.Tabuada;
 
 public class FrameTabuada {
 	
@@ -114,21 +120,12 @@ public class FrameTabuada {
 		labelResultado.setFont(new Font("Arial", Font.BOLD, 20));
 		labelResultado.setBounds(15, 330, 150, 50);
 		
-		JList<String> listLista = new JList<>();
+		JScrollPane scroll = new JScrollPane();
+		scroll.setBounds(10, 370, 440, 270);
+		JList<String> listLista = new JList<>();	
 		listLista.setBackground(new Color(255,255,167));
-		listLista.setBorder(new LineBorder(Color.BLUE));
-		listLista.setSize(400,400);
-		listLista.setBounds(10, 370, 440, 270);
-		
-		buttonCalcular.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				
-				
-			}
-		});
+		listLista.setFont(new Font("Arial", Font.BOLD, 20));
+		listLista.setBorder(new LineBorder(Color.BLUE));	
 
 		painel.add(labelIcone);
 		painel.add(labelTitulo);
@@ -143,9 +140,54 @@ public class FrameTabuada {
 		painel.add(buttonCalcular);
 		painel.add(buttonLimpar);
 		painel.add(labelResultado);
+		painel.add(scroll);
 		painel.add(listLista);
 
 		tela.setVisible(true);
+		
+		buttonCalcular.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Tabuada tabuada = new Tabuada();
+				tabuada.multiplicador = Integer.parseInt(textFieldNumMultiplicado.getText());
+				tabuada.minimoMultiplicador = Integer.parseInt(textFieldMinimoMultiplicador.getText());			
+				tabuada.maximoMultiplicador = Integer.parseInt(textFieldMaximoMultiplicador.getText());
+			
+//				if(tabuada.minimoMultiplicador > tabuada.maximoMultiplicador) {
+//					JOptionPane.showInternalMessageDialog(null, "O mínimo multiplicador é maior que o máximo", "Erro", JOptionPane.ERROR_MESSAGE);
+//					textFieldNumMultiplicado.setText(null);
+//					textFieldMinimoMultiplicador.setText(null);
+//					textFieldMaximoMultiplicador.setText(null);
+//					
+//				} else if(tabuada.multiplicador > 1000000){
+//					JOptionPane.showInternalMessageDialog(null, "A calculadora não é capaz de calcular este número", "Erro", JOptionPane.ERROR_MESSAGE);
+//					textFieldNumMultiplicado.setText(null);
+//					textFieldMinimoMultiplicador.setText(null);
+//					textFieldMaximoMultiplicador.setText(null);
+//				}
+				
+				listLista.setListData(tabuada.getResultado());
+				scroll.getViewport().add(listLista);
+				
+			}
+		});
+		
+		buttonLimpar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == buttonLimpar);
+				
+				textFieldNumMultiplicado.setText(null);
+				textFieldMinimoMultiplicador.setText(null);
+				textFieldMaximoMultiplicador.setText(null);
+				
+				DefaultListModel<String> lista = new DefaultListModel<>();
+				listLista.setModel(lista);
+							
+			}
+		});
 
 	}
 

@@ -169,7 +169,7 @@ public class FrameTabuada {
 					}
 				
 				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null, "Caractere inválido colocado!", "Erro",JOptionPane.ERROR_MESSAGE, null);
+					JOptionPane.showMessageDialog(null, "Não é possível fazer o cálculo!", "Erro",JOptionPane.ERROR_MESSAGE, null);
 					textFieldNumMultiplicado.setText(null);
 					textFieldMinimoMultiplicador.setText(null);
 					textFieldMaximoMultiplicador.setText(null);

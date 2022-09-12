@@ -149,26 +149,34 @@ public class FrameTabuada {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Tabuada tabuada = new Tabuada();
-				tabuada.multiplicador = Integer.parseInt(textFieldNumMultiplicado.getText());
-				tabuada.minimoMultiplicador = Integer.parseInt(textFieldMinimoMultiplicador.getText());			
-				tabuada.maximoMultiplicador = Integer.parseInt(textFieldMaximoMultiplicador.getText());
-			
-//				if(tabuada.minimoMultiplicador > tabuada.maximoMultiplicador) {
-//					JOptionPane.showInternalMessageDialog(null, "O mínimo multiplicador é maior que o máximo", "Erro", JOptionPane.ERROR_MESSAGE);
-//					textFieldNumMultiplicado.setText(null);
-//					textFieldMinimoMultiplicador.setText(null);
-//					textFieldMaximoMultiplicador.setText(null);
-//					
-//				} else if(tabuada.multiplicador > 1000000){
-//					JOptionPane.showInternalMessageDialog(null, "A calculadora não é capaz de calcular este número", "Erro", JOptionPane.ERROR_MESSAGE);
-//					textFieldNumMultiplicado.setText(null);
-//					textFieldMinimoMultiplicador.setText(null);
-//					textFieldMaximoMultiplicador.setText(null);
-//				}
 				
-				listLista.setListData(tabuada.getResultado());
-				scroll.getViewport().add(listLista);
+				try {
+				
+					Tabuada tabuada = new Tabuada();
+					tabuada.multiplicador = Integer.parseInt(textFieldNumMultiplicado.getText());
+					tabuada.minimoMultiplicador = Integer.parseInt(textFieldMinimoMultiplicador.getText());			
+					tabuada.maximoMultiplicador = Integer.parseInt(textFieldMaximoMultiplicador.getText());
+				
+					if (tabuada.minimoMultiplicador <= tabuada.maximoMultiplicador) {
+						
+						listLista.setListData(tabuada.getResultado());
+						scroll.getViewport().add(listLista);
+				
+					} else {
+						JOptionPane.showMessageDialog(null, "O mínimo multiplicador é maior que o máximo multiplicador!", "Erro",JOptionPane.ERROR_MESSAGE, null);
+						textFieldNumMultiplicado.setText("");
+						textFieldMinimoMultiplicador.setText("");
+						textFieldMaximoMultiplicador.setText("");
+							
+					}
+				
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Caractere inválido colocado!", "Erro",JOptionPane.ERROR_MESSAGE, null);
+					textFieldNumMultiplicado.setText("");
+					textFieldMinimoMultiplicador.setText("");
+					textFieldMaximoMultiplicador.setText("");
+				
+				}
 				
 			}
 		});

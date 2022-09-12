@@ -164,17 +164,17 @@ public class FrameTabuada {
 				
 					} else {
 						JOptionPane.showMessageDialog(null, "O mínimo multiplicador é maior que o máximo multiplicador!", "Erro",JOptionPane.ERROR_MESSAGE, null);
-						textFieldNumMultiplicado.setText("");
-						textFieldMinimoMultiplicador.setText("");
-						textFieldMaximoMultiplicador.setText("");
+						textFieldNumMultiplicado.setText(null);
+						textFieldMinimoMultiplicador.setText(null);
+						textFieldMaximoMultiplicador.setText(null);
 							
 					}
 				
 				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(null, "Caractere inválido colocado!", "Erro",JOptionPane.ERROR_MESSAGE, null);
-					textFieldNumMultiplicado.setText("");
-					textFieldMinimoMultiplicador.setText("");
-					textFieldMaximoMultiplicador.setText("");
+					textFieldNumMultiplicado.setText(null);
+					textFieldMinimoMultiplicador.setText(null);
+					textFieldMaximoMultiplicador.setText(null);
 				
 				}
 				

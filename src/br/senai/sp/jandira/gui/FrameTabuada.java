@@ -118,12 +118,13 @@ public class FrameTabuada {
 		labelResultado.setFont(new Font("Arial", Font.BOLD, 20));
 		labelResultado.setBounds(15, 330, 150, 50);
 		
-		JScrollPane scroll = new JScrollPane();
-		scroll.setBounds(10, 370, 440, 270);
 		JList<String> listLista = new JList<>();	
 		listLista.setBackground(new Color(255,255,167));
 		listLista.setFont(new Font("Arial", Font.BOLD, 20));
-		listLista.setBorder(new LineBorder(Color.BLUE));	
+		listLista.setBorder(new LineBorder(Color.BLUE));
+		JScrollPane scroll = new JScrollPane();
+		scroll.setBounds(10, 370, 440, 270);
+		scroll.getViewport().add(listLista);			
 
 		painel.add(labelIcone);
 		painel.add(labelTitulo);
@@ -139,7 +140,6 @@ public class FrameTabuada {
 		painel.add(buttonLimpar);
 		painel.add(labelResultado);
 		painel.add(scroll);
-		painel.add(listLista);
 
 		tela.setVisible(true);
 		
@@ -158,7 +158,6 @@ public class FrameTabuada {
 					if (tabuada.minimoMultiplicador <= tabuada.maximoMultiplicador) {
 						
 						listLista.setListData(tabuada.getResultado());
-						scroll.getViewport().add(listLista);
 				
 					} else {
 						JOptionPane.showMessageDialog(null, "O mínimo multiplicador é maior que o máximo multiplicador!", "Erro",JOptionPane.ERROR_MESSAGE, null);
